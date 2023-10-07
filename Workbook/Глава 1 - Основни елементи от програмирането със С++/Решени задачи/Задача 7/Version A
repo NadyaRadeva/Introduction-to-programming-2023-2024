@@ -1,0 +1,34 @@
+#include<iostream>
+
+int main() {
+	double side, height;
+
+	std::cout << "Enter size of side: ";
+	std::cin >> side;
+	if (!std::cin) {
+		std::cout << "You have entered WRONG data!" << std::endl;
+		return 1;
+	}
+	if (side <= 0) {
+		std::cout << "You should enter positive numbers!" << std::endl;
+		return 1;
+	}
+
+	std::cout << "Enter size of height: ";
+	std::cin >> height;
+	if (!std::cin) {
+		std::cout << "You have entered WRONG data!" << std::endl;
+		return 1;
+	}
+	if (height <= 0) {
+		std::cout << "You should enter positive numbers!" << std::endl;
+		return 1;
+	}
+
+	double surface;
+	surface = (side * height) / 2;
+
+	std::cout << "The SURFACE of the triangle is: " << surface << std::endl;
+
+	return 1;
+}
