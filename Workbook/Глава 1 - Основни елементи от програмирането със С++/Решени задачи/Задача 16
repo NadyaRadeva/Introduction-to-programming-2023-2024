@@ -1,6 +1,0 @@
-Да се напише програма, чрез която се намира стойността на булевата функция, зададена чрез таблицата:
-|    a      |     B     |  a nand b  |
-|   false   |   false   |    true    |
-|   false   |   true    |    true    |
-|   true    |   false   |    true    |
-|   true    |   true    |    false   |
