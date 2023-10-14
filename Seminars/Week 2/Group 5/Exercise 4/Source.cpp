@@ -1,4 +1,5 @@
 #include<iostream>
+#include<iomanip>
 
 int main() {
 	int a, b;
@@ -21,7 +22,7 @@ int main() {
 	std::cout << "First number devided by the second: " << floor(a / (double)b) << std::endl;
 	std::cout << "First number devided by the second: " << ceil(a / (double)b) << std::endl;
 	std::cout << "Exponentiation: " << pow(a, sqrt(b)) << std::endl;
-	std::cout << "Logarithm: " << log2(floor(a / (double)b)) << std::endl;
+	std::cout << "Logarithm: " << std::setprecision(5) << log2(floor(a / (double)b)) << std::endl;
 
 	return 1;
 }
