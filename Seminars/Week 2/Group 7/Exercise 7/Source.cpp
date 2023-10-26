@@ -2,6 +2,7 @@
 
 int main() {
 	int x1, y1, radius1, x2, y2, radius2;
+	std::cin >> x1 >> y1 >> radius1 >> x2 >> y2 >> radius2;
 
 	double d = sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
 
