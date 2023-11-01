@@ -18,10 +18,10 @@ int main() {
 	} while (x1 < 1 || x2>8 || y2 < 1 || y2>8);
 
 	if ((x1 - 1 == x2 || x1 == x2 || x1 + 1 == x2) && (x1 - y1 == x2 - y2 || x1 + y1 == x2 + y2)) {
-		std::cout << "The second point can be reached by a rook." << std::endl;
+		std::cout << "The second point can be reached by a bishop." << std::endl;
 	}
 	else {
-		std::cout << "The second point can not be reached by a rook." << std::endl;
+		std::cout << "The second point can not be reached by a bishop." << std::endl;
 	}
 
 	return 1;
