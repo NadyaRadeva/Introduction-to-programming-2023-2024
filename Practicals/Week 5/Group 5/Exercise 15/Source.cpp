@@ -2,56 +2,57 @@
 
 const int MAX_SIZE = 1024;
 
-void read_array(int* arr, unsigned arr_size) {
+void readArray(int* arr, unsigned arrSize) {
   for (int i = 0; i < arr_size; i++) {
     std::cout << "Enter element at arr[" << i << "]: " << std::endl;
     std::cin >> arr[i];
   }
 }
 
-unsigned read_array_size(const unsigned max_size) {
-  unsigned arr_size;
+unsigned readArraySize(const unsigned maxSize) {
+  unsigned arrSize;
 
   do {
     std::cout << "Enter array size: " << std::endl;
 
     std::cin >> arr_size;
-  } while (arr_size > max_size);
+  } while (arrSize > maxSize);
 
-  return arr_size;
+  return arrSize;
 }
 
-int longest_arithmetic_progression_len(int* arr, unsigned arr_size, int d) {
-  int longest_len = 1;
-  for (int i = 0; i < arr_size - 1; i++) {
-    int current_len = 1;
+int longestArithmeticProgressionLen(int* arr, unsigned arrSize, int d) {
+  int longestLen = 1;
+  for (int i = 0; i < arrSize - 1; i++) {
+    int currentLen = 1;
     int j = i + 1;
-    while (j < arr_size && arr[j] == arr[j - 1] + d) {
-      current_len++;
+    while (j < arrSize && arr[j] == arr[j - 1] + d) {
+      currentLen++;
       j++;
     }
 
-    if (current_len > longest_len) {
-      longest_len = current_len;
+    if (currentLen > longestLen) {
+      longestLen = currentLen;
     }
   }
 
-  return longest_len;
+  return longestLen;
 }
 
 int main() {
   int arr[MAX_SIZE];
   int d;
 
-  unsigned arr_size = read_array_size(MAX_SIZE);
+  unsigned arrSize = readArraySize(MAX_SIZE);
 
-  read_array(arr, arr_size);
+  readArray(arr, arrSize);
 
   std::cout << "ENTER d: " << std::endl;
   std::cin >> d;
 
-  int longest_length = longest_arithmetic_progression_len(arr, arr_size, d);
+  int longestLength = longestArithmeticProgressionLen(arr, arrSize, d);
 
-  std::cout << "The longest arithmetic progression has length: " << longest_length << std::endl;
-  return 0;
+  std::cout << "The longest arithmetic progression has length: " << longestLength << std::endl;
+  
+  return 1;
 }
