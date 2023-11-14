@@ -1,14 +1,14 @@
 #include<iostream>
 
-int getKthBit(int number, unsigned int k);
+int getKthBit(unsigned int number, unsigned int k);
 
-int getKthBit(int number, unsigned int k) {
+int getKthBit(unsigned int number, unsigned int k) {
 	return (number >> (k - 1)) & 1;
 }
 
 int main() {
 	std::cout << "Enter a number: ";
-	int number;
+	unsigned int number;
 	std::cin >> number;
 	if (!std::cin) {
 		throw std::runtime_error("Invalid data!");
