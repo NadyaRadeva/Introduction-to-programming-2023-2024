@@ -1,14 +1,14 @@
 #include<iostream>
 
-int checkRightmostBit(int number);
+int checkRightmostBit(unsigned int number);
 
-int checkRightmostBit(int number) {
+int checkRightmostBit(unsigned int number) {
 	return number & 1;
 }
 
 int main() {
 	std::cout << "Enter a number: ";
-	int number;
+	unsigned int number;
 	std::cin >> number;
 	if (!std::cin) {
 		throw std::runtime_error("Invalid data!");
