@@ -7,7 +7,6 @@ int matrix[MAX_ROWS][MAX_COLUMNS];
 int main() {
     unsigned int rows, columns;
 
-    std::cout << "Matrix 1: " << std::endl;
     std::cout << "Enter the number of rows: ";
     std::cin >> rows;
     if (!std::cin || rows <= 0 || rows > 50) {
