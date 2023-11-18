@@ -17,7 +17,7 @@ int main() {
 		throw std::runtime_error("Invalid input!");
 	}
 
-	std::cout << "Enter elements in the array: ";
+	std::cout << "Enter elements in the matrix: ";
 	for (size_t i = 0; i < n; ++i) {
 		for (size_t j = 0; j < m; ++j) {
 			std::cin >> matrix[i][j];
