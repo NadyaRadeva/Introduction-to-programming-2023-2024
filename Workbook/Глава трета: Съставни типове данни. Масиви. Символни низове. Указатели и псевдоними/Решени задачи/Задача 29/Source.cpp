@@ -14,6 +14,9 @@ void createMatrix(int matrix[][MAX_ROW_AND_COL_SIZE],unsigned int size) {
 		for (size_t j = 0; j < size; ++j) {
 			std::cin >> matrix[i][j];
 		}
+		if (!std::cin) {
+				throw std::runtime_error("Invalid input!");
+		}
 	}
 }
 
