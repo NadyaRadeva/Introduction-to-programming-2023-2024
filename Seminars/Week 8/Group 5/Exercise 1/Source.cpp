@@ -7,7 +7,7 @@ unsigned int strlen(char str[]);
 unsigned int strlen(char str[]) {
 	unsigned int br = 0;
 
-	while (*str != '\0') {  // Use dereference operator (*) to access the character at the current position
+	while (*str != '\0') {
 		br++;
 		str++;
 	}
