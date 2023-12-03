@@ -1,0 +1,9 @@
+Реализирайте следните функции:
+toUpper() and toLower() convert the case of characters in a string using a specified locale.
+reverse()
+eraseFirst() will remove the first occurrence in the source string.
+eraseNth() will remove the nth occurrence in the source string.
+eraseAll() will remove all occurrences of a particular character from a string.
+replaceFirst() will replace the first occurrence in the source string.
+replaceNth() will replace the nth occurrence in the source string.
+replaceAll() will replace all occurrences of a particular character from a string.
