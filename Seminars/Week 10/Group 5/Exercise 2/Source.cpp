@@ -27,8 +27,7 @@ int main() {
 		return -1;
 	}
 
-	std::cout << "The sum is: ";
-	findSum(x,n);
+	std::cout << "The sum is: " << findSum(x,n);
 
 	std::cout << std::endl;
 
