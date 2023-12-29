@@ -30,7 +30,5 @@ int main() {
 
 	std::cout << "The sum with step " << k << " is: " << findSum(n, 1, k);
 
-	std::cout << std::endl;
-
 	return 0;
 }
