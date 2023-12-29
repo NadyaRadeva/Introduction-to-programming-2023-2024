@@ -20,10 +20,7 @@ int main() {
 		return -1;
 	}
 
-	std::cout << "The binary number is: ";
-	toBinary(number);
-
-	std::cout << std::endl;
+	std::cout << "The binary number is: " << toBinary(number);
 
 	return 0;
 }
