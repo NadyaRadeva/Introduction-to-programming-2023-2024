@@ -1,5 +1,7 @@
 #include<iostream>
 
+void toBinary(int number);
+
 void toBinary(int number) {
 	if (number == 0) {
 		return;
