@@ -28,8 +28,6 @@ int main() {
 	}
 
 	std::cout << "The sum is: " << findSum(x,n);
-
-	std::cout << std::endl;
-
+	
 	return 0;
 }
