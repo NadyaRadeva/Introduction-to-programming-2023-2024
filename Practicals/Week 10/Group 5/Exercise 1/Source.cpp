@@ -1,6 +1,6 @@
 #include<iostream>
 
-int exponent(int n, int m) {
+int exponent(unsigned int n, int m) {
 	if (m == 0) {
 		return 1;
 	}
@@ -10,9 +10,9 @@ int exponent(int n, int m) {
 
 int main() {
 	std::cout << "Enter the value of N: ";
-	int n;
+	unsigned int n;
 	std::cin >> n;
-	if (!std::cin) {
+	if (!std::cin || n <= 0) {
 		throw std::runtime_error("Invalid input!");
 		return -1;
 	}
