@@ -2,83 +2,53 @@
 
 #include <iostream>
 
-bool hasOp(const char* expr, int length) {
-	for (int i = 0; i < length; i++) {
-		if (expr[i] == '+' || expr[i] == '-' || expr[i] == '/' || expr[i] == '*') return true;
+// Това е решението, което казахме на практикума. То всъщност е грешно...
+// Помислете защо не работи, каква допълнителна информация е нужна
+/*
+void wrong(char* src, unsigned srcLength, unsigned length) {
+	if (!length) {
+		std::cout << std::endl;
+		return;
 	}
-	return false;
+	for (int i = 0; i < srcLength; i++) {
+		std::cout << src[i];
+		wrong(src, srcLength, length - 1);
+	}
 }
+*/
 
-double getNumber(const char* expr, int length) {
-	double res = 0;
-	for (int i = 0; i < length; i++) {
-		int digit = expr[i] - '0';
-		res = res * 10 + digit;
+// Ето го и правилното решение
+// Проблемът в горното решение е, че като отпечатаме дума и след това променим даден символ,
+// ние ще отпечатаме низ само от промяната нататък, а не като цяло новата генерирана дума от начало до край
+
+// Например ако сме стигнали до думата "abbc" и променим символа 'c' на 'd', ние ще отпечатаме "d", а не думата "abbd" 
+
+// Затова идеята е следната - пазим си текущ низ, който ни държи натрупаната дума до момента
+// Все едно си пазим текущия път, по който сме минали в рекурсивното дърво
+// Или пък може да се каже, че си пазим историята от направените избори на символ до момента
+void helper(char* src, unsigned srcLength, unsigned length, char* curr, unsigned currIndex) {
+	// Дъно - ако не остава какво да генерираме повече, отпечатваме генерираната дума до момента
+	if (!length) {
+		std::cout << curr << std::endl;
+		return;
 	}
-	return res;
-}
-
-int findOp(const char* expr, int length) {
-	// Единственото нещо, което променяме тук е как намираме "средната" операция
-	// Тук вече не е гарантирано, че изразът, който искаме да прескочим е скобуван (може да е само число)
-	// Значи просто предварително трябва да проверим дали имаме число или някакъв скобуван израз
-
-	// Имаме скоба -> имаме скобуван израз, т.е. можем да си преизползваме кода от миналата подточка
-	if (*expr == '(') {
-		int i = 0;
-
-		int numOpening = 0;
-		while (i < length) {
-			if (expr[i] == '(') {
-				numOpening++;
-			}
-			else if (expr[i] == ')') {
-				numOpening--;
-				if (!numOpening) break;
-			}
-			i++;
-		}
-		return i + 2;
-	}
-	// Нямаме скоба -> имаме число. В този случай е достатъчно да намерим първата срещната операция
-	int i = 0;
-	for (; expr[i] != '+' && expr[i] != '-' && expr[i] != '*' && expr[i] != '/'; i++) {}
-	return i;
-}
-
-double evalExpr(const char* expr, int length) {
-
-	if (!hasOp(expr, length)) {
-		return getNumber(expr, length);
-	}
-
-	// Махаме външните скоби този път само ако имаме операция, защото в тази подточка самите числа не са заградени със скоби
-	expr += 1;
-	length -= 2;
-
-	int opIndex = findOp(expr, length);
-	char op = expr[opIndex];
-
-	double leftEval = evalExpr(expr, opIndex - 1);
-	double rightEval = evalExpr(expr + opIndex + 2, length - (opIndex - 1) - 3);
-	switch (op) {
-	case '+':
-		return leftEval + rightEval;
-	case '*':
-		return leftEval * rightEval;
-	case '/':
-		return leftEval / rightEval;
-	case '-':
-		return leftEval - rightEval;
-	default:
-		throw std::runtime_error("Invalid operation");
+	// Като искаме да генерираме дума с дължина n, гледаме какво можем да сложим на първата позиция
+	// Ако src = {a, b, c}, то можем на първата позиция да сложим a, b или c
+	// След това ще трябва да генерираме думи с дължина n - 1, което е просто едно рекурсивно извикване за всеки избор на първи символ
+	for (int i = 0; i < srcLength; i++) {
+		// Всеки път като направим избор коя буква ще изберем, трябва да си обновим и текущата генерирана дума
+		curr[currIndex] = src[i];
+		helper(src, srcLength, length - 1, curr, currIndex + 1);
 	}
 }
 
-double eval(const char* expr) {
-	return evalExpr(expr, std::strlen(expr));
+void genFromVocab(char* src, unsigned srcLength, unsigned length) {
+	char* curr = new char[length + 1]();
+	helper(src, srcLength, length, curr, 0);
+	delete[] curr;
 }
 
 int main() {
-	std::cout << eval("((5 + (3 * ((2 - 5) / 3))) + 10)") << std::endl;
+	char src[] = { 'a', 'b', 'c'};
+	genFromVocab(src, 3, 3);
 }
