@@ -55,5 +55,7 @@ int main() {
 
 	std::cout << "There is a prime number in the array? - " << std::boolalpha << isPrimeInArray(array, arrSize) << std::endl;
 
+	delete[] array;
+
 	return 0;
 }
