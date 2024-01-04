@@ -1,6 +1,9 @@
 #include<iostream>
 #include<iomanip>
 
+bool helper(int* arr, int length, int ele, int index);
+bool member(int* arr, int length, int ele);
+
 bool helper(int* arr, int length, int ele, int index) {
 	if (index == length) return false;
 	if (arr[index] == ele) return true;
@@ -24,6 +27,10 @@ int main() {
     std::cout << "Enter the elements in your array: ";
     for (size_t i = 0; i < sizeArray; ++i) {
         std::cin >> array[i];
+	if(!std::cin) {
+		throw std::runtime_error("Invalid input!");
+		return -1;
+	}
     }
 
     int number;
