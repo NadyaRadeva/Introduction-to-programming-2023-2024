@@ -4,13 +4,17 @@
 bool isPrime(int number);
 
 bool isPrime(int number) {
-	for (size_t i = 2; i <= number / 2; ++i) {
-		if (number % i != 0) {
-			return true;
-		}
-	}
+	if (number <= 1) {
+        return false;
+    }
 
-	return false;
+    for (int i = 2; i <= number / 2; ++i) {
+        if (number % i == 0) {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 int main() {
