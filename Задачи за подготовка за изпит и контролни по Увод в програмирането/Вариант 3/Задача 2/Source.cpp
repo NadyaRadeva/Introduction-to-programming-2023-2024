@@ -1,6 +1,28 @@
 #include<iostream>
 
+void sortArray(int* arr, unsigned int arrSize);
 void findLongestSequenceOfTheSameNum(int* arr, unsigned int arrSize);
+
+void sortArray(int* arr, unsigned int arrSize) {
+	unsigned int minIndex;
+	int min;
+
+	for (size_t i = 0; i < arrSize - 1; ++i) {
+		minIndex = i;
+		min = arr[minIndex];
+
+		for (size_t j = i + 1; j < arrSize; ++j) {
+			if (arr[j] < min) {
+				minIndex = j;
+				min = arr[minIndex];
+			}
+		}
+
+		arr[minIndex] = arr[i];
+		arr[i] = min;
+	}
+
+}
 
 void findLongestSequenceOfTheSameNum(int* arr, unsigned int arrSize) {
 	int maxLength = 0;
@@ -38,6 +60,15 @@ int main() {
 	for (size_t i = 0; i < size; ++i) {
 		std::cin >> arr[i];
 	}
+
+	sortArray(arr, size);
+
+	std::cout << "Your sorted array: ";
+	for (size_t i = 0; i < size; ++i) {
+		std::cout << arr[i] << " ";
+	}
+
+	std::cout << std::endl;
 
 	findLongestSequenceOfTheSameNum(arr, size);
 
