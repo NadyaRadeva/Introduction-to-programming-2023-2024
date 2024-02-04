@@ -1,32 +1,25 @@
 #include <iostream>
 
-int mult(int n, int k) {
+int mult(int n) {
     if (n < k) {
         return 1;
     }
-    if (n % k == 0) {
-        return n * mult(n - k, k);
+    if (n % 3 == 0) {
+        return n * mult(n - 3);
     }
-    return mult(n - 1, k);
+    return mult(n - 1);
 }
 
 int main() {
-    int n, k;
+    int n;
     std::cout << "Enter the end of your sequence: ";
     std::cin >> n;
-    if (!std::cin || n <= 0) {
+    if (!std::cin || n < 1) {
         throw std::runtime_error("Error! Invalid input for sequence end.");
         return 1;
     }
 
-    std::cout << "Enter your step: ";
-    std::cin >> k;
-    if (!std::cin || k <= 0) {
-        throw std::runtime_error("Error! Invalid input for step.");
-        return 1;
-    }
-
-    std::cout << "Your result is: " << mult(n, k) << std::endl;
+    std::cout << "Your result is: " << mult(n, 3) << std::endl;
 
     return 0;
 }
