@@ -19,7 +19,7 @@ int main() {
 		return 1;
 	}
 
-	std::cout << "The gcd of m and n is: " << gcd(m, n) << std::endl;
+	std::cout << "The greatest common divisor of m and n is: " << gcd(m, n) << std::endl;
 
 	return 0;
 }
